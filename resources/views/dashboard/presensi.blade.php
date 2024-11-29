@@ -24,8 +24,8 @@
                             </div>
 
                             <div class="d-flex flex-row-reverse">
-                                <button id="submit" class="btn btn-danger btn-sm" type="submit">
-                                    Daftar
+                                <button id="submit" class="btn btn-success btn-sm" type="submit">
+                                    Tambah
                                     <i class="fa-solid fa-file-user ms-2"></i>
                                 </button>
                             </div>
