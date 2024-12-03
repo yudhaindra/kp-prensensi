@@ -27,7 +27,10 @@ class DashboardController extends Controller
     public function admin(Request $request)
     {
         $user = Auth::user();
+
+        if (!$user->hasRole('admin')) {
         $user->assignRole('admin');
+        }
 
         return to_route('home');
     }

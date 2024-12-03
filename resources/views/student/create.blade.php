@@ -31,6 +31,10 @@
     <form method="POST" action="{{ route('students.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
+            <label for="exampleNisn">NISN </label>
+            <input type="text" class="form-control" placeholder="Masukkan NISN  " name="nisn">
+        </div>
+        <div class="form-group">
             <label for="exampleName">Nama </label>
             <input type="text" class="form-control" placeholder="Masukkan Nama  " name="nama">
         </div>

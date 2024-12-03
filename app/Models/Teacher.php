@@ -19,6 +19,7 @@ class Teacher extends Model
      * @var array
      */
     protected $fillable = [
+        'nip',
         'nama',
         'umur',
         'alamat',

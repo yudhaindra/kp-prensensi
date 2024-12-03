@@ -15,7 +15,7 @@
         <p class="lead">Form ini untuk menampilkan data siswa </p>
     </div>
     <div class="container">
-        <a href="{{ route('students.create') }}" class="btn btn-primary mb-3">Tambah Guru</a>
+        <a href="{{ route('students.create') }}" class="btn btn-primary mb-3">Tambah Siswa</a>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -25,6 +25,7 @@
         <thead>
             <tr>
                 <th scope="col">NO</th>
+                <th scope="col">NISN</th>
                 <th scope="col">NAMA</th>
                 <th scope="col">UMUR</th>
                 <th scope="col">ALAMAT</th>
@@ -37,6 +38,7 @@
                 <tr>
                     {{-- <td>{{ $student->id }}</td> --}}
                     <td>{{ $loop->iteration }}</td>
+                    <td>{{ $student->nisn }}</td>
                     <td>{{ $student->nama }}</td>
                     <td>{{ $student->umur }}</td>
                     <td>{{ $student->alamat }}</td>

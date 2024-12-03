@@ -33,6 +33,10 @@
         @method('PUT')
 
         <div class="form-group">
+            <label for="exampleNisn">NISN</label>
+            <input type="text" class="form-control" placeholder="Masukkan nisn" name="nisn" value="{{ old('nisn', $student->nisn) }}" required>
+        </div>
+        <div class="form-group">
             <label for="exampleName">Nama</label>
             <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama" value="{{ old('nama', $student->nama) }}" required>
         </div>

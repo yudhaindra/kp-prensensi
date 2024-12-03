@@ -26,6 +26,7 @@
             <thead>
                 <tr>
                     <th scope="col">NO</th>
+                    <th scope="col">NIP</th>
                     <th scope="col">NAMA</th>
                     <th scope="col">UMUR</th>
                     <th scope="col">ALAMAT</th>
@@ -37,6 +38,7 @@
                 @forelse($teachers as $teacher)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
+                        <td>{{ $teacher->nip }}</td>
                         <td>{{ $teacher->nama }}</td>
                         <td>{{ $teacher->umur }}</td>
                         <td>{{ $teacher->alamat }}</td>

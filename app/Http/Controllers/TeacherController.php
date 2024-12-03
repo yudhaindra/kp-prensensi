@@ -36,6 +36,7 @@ class TeacherController extends Controller
     {
         //
         $request->validate([
+            'nip' => ['required'],
             'nama' => ['required'],
             'umur' => ['required', 'integer'],
             'alamat' => ['required'],
@@ -47,6 +48,7 @@ class TeacherController extends Controller
         $file->move('images/teachers', $file->getClientOriginalName());
 
         Teacher::create([
+            'nip' => $request->nip,
             'nama' => $request->nama,
             'umur' => $request->umur,
             'alamat' => $request->alamat,
@@ -90,6 +92,7 @@ class TeacherController extends Controller
     {
         //
         $request->validate([
+            'nip' => ['required'],
             'nama'   => ['required'],
             'umur'   => ['required', 'integer'],
             'alamat' => ['required'],
@@ -112,6 +115,7 @@ class TeacherController extends Controller
         }
     
         $teachers->update([
+            'nip' => $request->nip,
             'nama'   => $request->nama,
             'umur'   => $request->umur,
             'alamat' => $request->alamat,

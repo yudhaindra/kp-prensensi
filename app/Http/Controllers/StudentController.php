@@ -33,6 +33,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nisn' => ['required'],
             'nama' => ['required'],
             'umur' => ['required'],
             'alamat' => ['required'],
@@ -44,6 +45,7 @@ class StudentController extends Controller
         $file->move('images', $file->getClientOriginalName());
 
         Student::create([
+            'nisn' => $request->nisn,
             'nama' => $request->nama,
             'umur' => $request->umur,
             'alamat' => $request->alamat,
@@ -80,6 +82,7 @@ class StudentController extends Controller
     {
         //
         $request->validate([
+            'nisn' => ['required'],
             'nama'   => ['required'],
             'umur'   => ['required', 'integer'],
             'alamat' => ['required'],
@@ -102,6 +105,7 @@ class StudentController extends Controller
         }
     
         $student->update([
+            'nisn' => $request->nisn,
             'nama'   => $request->nama,
             'umur'   => $request->umur,
             'alamat' => $request->alamat,
