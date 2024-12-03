@@ -8,29 +8,28 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
+    public function showLoginForm()
     {
-        return view('auth.login', [
-            config(['app.title' => "Login"]),
-        ]);
+        return view('auth.login'); // Return login view
     }
 
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function dae(Request $request)
+    public function login(Request $request)
     {
-        // $request->validate([
-        //     'id' => ['required'],
-        // ]);
+        $request->validate([
+            'nisn' => 'required|nisn',
+            'password' => 'required',
+        ]);
 
-        Auth::loginUsingId($request->id);
+        if (Auth::attempt($request->only('nisn', 'password'))) {
+            return redirect()->intended('dashboard'); // Redirect on success
+        }
 
-        return to_route('home');
+        return back()->withErrors(['nisn' => 'Invalid credentials']); // Redirect back with errors
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/login'); // Redirect to login after logout
     }
 }
