@@ -1,0 +1,267 @@
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+  }
+  
+  .main-container {
+    overflow: hidden;
+  }
+  
+  .main-container,
+  .main-container * {
+    box-sizing: border-box;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .main-container {
+    position: relative;
+    width: 1440px;
+    height: 1681px;
+    margin: 0 auto;
+    background: #bbe4ff;
+    overflow: hidden;
+  }
+  .rectangle {
+    position: relative;
+    width: 1440px;
+    height: 49px;
+    margin: 0 0 0 0;
+    background: #2572c4;
+    z-index: 1;
+  }
+  .sma-immanuel-kalasan {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    width: 266px;
+    height: 24px;
+    top: 12px;
+    left: 180px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .rectangle-1 {
+    position: relative;
+    width: 1440px;
+    height: 153px;
+    margin: 0 0 0 0;
+    background: #ffffff;
+    z-index: 8;
+  }
+  .head-n-foot {
+    position: absolute;
+    width: 114px;
+    height: 114px;
+    top: 19px;
+    left: 66px;
+    background: url(./assets/images/47dd810f-9c91-4780-9a82-0090be1cc6f9.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 20;
+  }
+  .im-class {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    width: 247px;
+    height: 58px;
+    top: 47px;
+    left: 185px;
+    color: #423599;
+    font-family: Inter, var(--default-font-family);
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 58px;
+    text-align: center;
+    white-space: nowrap;
+    z-index: 19;
+  }
+  .head-n-foot-2 {
+    position: relative;
+    width: 218px;
+    height: 218px;
+    margin: 83px 0 0 611px;
+    background: url(./assets/images/fbf64abf-bf2b-4b01-94fc-e002ac8b58fd.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 9;
+  }
+  .rectangle-3 {
+    position: relative;
+    width: 776px;
+    height: 350px;
+    margin: 30px 0 0 332px;
+    font-size: 0px;
+    background: #ffffff;
+    z-index: 10;
+    overflow: visible auto;
+    border-radius: 40px;
+  }
+  .id {
+    display: block;
+    position: relative;
+    height: 29px;
+    margin: 27px 0 0 46px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 13;
+  }
+  .rectangle-4 {
+    position: relative;
+    width: 684px;
+    height: 52px;
+    margin: 9px 0 0 46px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    z-index: 11;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .nomor-induk-siswa {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 13px;
+    left: 25px;
+    color: #8e8e8e;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 14;
+  }
+  .password {
+    display: block;
+    position: relative;
+    height: 29px;
+    margin: 35px 0 0 46px;
+    color: #000000;
+    font-family: Inter, var(--default-font-family);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 29px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 16;
+  }
+  .rectangle-5 {
+    position: relative;
+    width: 684px;
+    height: 52px;
+    margin: 6px 0 0 46px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    z-index: 12;
+    overflow: hidden;
+    border-radius: 15px;
+  }
+  .password-6 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 13px;
+    left: 25px;
+    color: #8e8e8e;
+    font-family: Inter, var(--default-font-family);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 15;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    position: relative;
+    width: 142px;
+    height: 49px;
+    margin: 31px 0 0 317px;
+    padding: 12px 12px 12px 12px;
+    cursor: pointer;
+    background: #427bff;
+    border: 1px solid #2c2c2c;
+    z-index: 17;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  .login-button {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 16px;
+    color: #f5f5f5;
+    font-family: Inter, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 18;
+  }
+  .footer {
+    position: relative;
+    width: 1440px;
+    height: 317px;
+    margin: 481px 0 0 0;
+    background: #010169;
+    z-index: 4;
+    overflow: visible auto;
+  }
+  .content {
+    position: relative;
+    width: 503px;
+    height: 90px;
+    margin: 52px 0 0 130px;
+    background: url(./assets/images/20d0f342-1b82-4849-a0dd-abe162b0bdb3.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 5;
+  }
+  .contact-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    width: 354px;
+    height: 103px;
+    margin: 16px 0 0 130px;
+    color: #ffffff;
+    font-family: Inter, var(--default-font-family);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20.574px;
+    text-align: left;
+    z-index: 6;
+  }
