@@ -72,7 +72,11 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
 
         // Tampilkan view untuk form edit
-        return view('student.edit', compact('student'));
+        // return view('student.edit', compact('student'));
+        return view('student.edit', [
+            config(['app.jumbotron' => "danger"]),
+            'student' => $student,
+        ]);
     }
 
     /**

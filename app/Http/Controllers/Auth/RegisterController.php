@@ -47,6 +47,8 @@ class RegisterController extends Controller
             'alamat'          => $request->alamat,
         ]);
 
+        $user->assignRole('student');
+
         event(new Registered($user));
 
         Auth::login($user, true);

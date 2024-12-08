@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $user = Auth::user();
 
         if (!$user->hasRole('admin')) {
-        $user->assignRole('admin');
+            $user->assignRole('admin');
         }
 
         return to_route('home');

@@ -1,4 +1,7 @@
 <x-app>
+
+    @include('layouts.jumbotron')
+
     <div class="container" style="margin-bottom: 150px;">
         <div class="row">
             <div class="col-md-3">
