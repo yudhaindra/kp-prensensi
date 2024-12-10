@@ -48,44 +48,55 @@
 
     <div class="card mb-3">
         <div class="card-body">
-            <table id="presensi-list" class="table table-striped w-100"></table>
+            <table class="table table-striped w-100">
+                <thead>
+                    <tr>
+                        <th scope="col">Tanggal</th>
+                        <th scope="col">Pertemuan Ke</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($dataPresensi as $presensi)
+                        @php
+                            $now = Carbon\Carbon::now();
+                            $created = Carbon\Carbon::create($presensi->created_at);
+                            $expired = $created->copy()->addHours(1);
+                        @endphp
+
+                        <tr>
+                            <td>
+                                {{ $created->isoFormat('DD-MM-YYYY') }}
+                                <br>
+                                {{ $created->isoFormat('HH:mm:ss') }}
+                            </td>
+                            <td>{{ $presensi->pertemuan }}</td>
+                            <td>{{ $presensi->name }}</td>
+                            <td class="text-center">
+                                @if (!$now->greaterThan($expired))
+                                    @if (!$presensi->users->isNotEmpty())
+                                        <form method="post" action="{{ route('api.presensi.store') }}">
+                                            @csrf
+                                            <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
+                                            <input type="text" name="presensi_id" value="{{ $presensi->id }}" hidden>
+
+                                            <button type="submit" class="btn btn-primary btn-sm">Presensi</button>
+                                        </form>
+                                    @endif
+                                @endif
+                                <br>
+                                @if ($presensi->users->isNotEmpty())
+                                    <p class="fw-bold text-primary">H</p>
+                                @else
+                                    <p class="fw-bold text-danger">A</p>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
 </div>
-
-@push('body')
-    <script>
-        $(document).ready(function() {
-            $("#presensi-list").DataTable({
-                processing: true,
-                serverSide: true,
-                autoWidth: false,
-                pageLength: 10,
-                ajax: "{{ route('api.presensi') }}",
-                columns: [{
-                    "title": "Tanggal",
-                    "data": "created_at",
-                    "searchable": false,
-                    "orderable": true,
-                    "render": function(data, row, full) {
-                        let date = new Date(data);
-
-                        return `${date.toLocaleString('en-GB', { timeZone: 'UTC' })}`;
-                    },
-                }, {
-                    "title": "Pertemuan Ke",
-                    "data": "pertemuan",
-                    "className": "text-center",
-                    "searchable": false,
-                    "orderable": true,
-                }, {
-                    "title": "Name",
-                    "data": "name",
-                    "searchable": true,
-                    "orderable": false,
-                }]
-            });
-        });
-    </script>
-@endpush

@@ -15,8 +15,19 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
+        // $dataPresensi = Presensi::latest()->get();
+
+        $now = \Carbon\Carbon::now()->diffInHours();
+
+        $user = Auth::user();
+
+        $dataPresensi = Presensi::with(['users' => function ($query) use ($user) {
+            $query->where('users.id', $user->id);
+        }])->latest()->get();
+
         return view('dashboard.index', [
             config(['app.title' => "Dashboard"]),
+            'dataPresensi' => $dataPresensi,
         ]);
     }
 

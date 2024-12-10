@@ -13,7 +13,10 @@ Route::group(
         'as' => 'api.',
     ],
     function () {
-        Route::any('/presensi', [PresensiController::class, 'index'])
+        Route::get('/presensi', [PresensiController::class, 'index'])
             ->name('presensi');
+            
+        Route::post('/presensi', [PresensiController::class, 'store'])
+            ->name('presensi.store');
     },
 );
