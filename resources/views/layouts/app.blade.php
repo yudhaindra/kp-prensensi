@@ -24,8 +24,29 @@
 </head>
 
 <body>
-    
     @yield('content')
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white">
+        <div class="container py-5">
+            <div class="row">
+                <!-- Logo dan Informasi -->
+                <div class="col-md-4">
+                    <img src="{{ asset('images/teachers/footer.png') }}" alt="Logo SMA Immanuel Kalasan" class="mb-3" style="width: 300px;">
+                    <h5>Sukses Meraih Masa Depan</h5>
+                </div>
+                <div class="col-md-8 text-end">
+                    <address>
+                        Jalan Solo KM 15<br>
+                        Gampar, Tamanmartani, Kalasan, Sleman,Yogyakarta<br>
+                        Telp : 0274 4469287<br>
+                        Email : smaimmanuelkalasan@gmail.com
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
 
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
