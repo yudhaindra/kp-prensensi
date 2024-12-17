@@ -18,18 +18,18 @@
                         <i class="fa-solid fa-circle-info me-2"></i>
                         Presensi
                     </button>
-                    <button type="button" class="list-group-item list-group-item-action active" id="v-pills-home-tab"
-                        data-bs-toggle="pill" data-bs-target="#v-pills-home" aria-controls="v-pills-home"
-                        aria-selected="true">
-                        <i class="fa-solid fa-circle-info me-2"></i>
-                        Guru
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action active" id="v-pills-home-tab"
-                        data-bs-toggle="pill" data-bs-target="#v-pills-home" aria-controls="v-pills-home"
-                        aria-selected="true">
-                        <i class="fa-solid fa-circle-info me-2"></i>
-                        Murid
-                    </button>
+                    <a href="{{ route('students.show') }}" class="list-group-item list-group-item-action">
+                        <i class="fa-solid fa-user-graduate me-2"></i>
+                        Students
+                    </a>
+                    <a href="{{ route('teachers.show') }}" class="list-group-item list-group-item-action">
+                        <i class="fa-solid fa-chalkboard-teacher me-2"></i>
+                        Teachers
+                    </a>
+                    <a href="{{ route('roles.show') }}" class="list-group-item list-group-item-action">
+                        <i class="fa-solid fa-chalkboard-teacher me-2"></i>
+                        Roles
+                    </a>
                 </div>
             </div>
             <div class="col-md-9">
