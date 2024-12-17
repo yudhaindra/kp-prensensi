@@ -45,29 +45,4 @@ class DashboardController extends Controller
 
         return to_route('home');
     }
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-        $request->validate([
-            'pertemuan' => ['required'],
-            'name'      => ['required'],
-            'expired'   => ['required'],
-        ]);
-
-        $data = Presensi::create([
-            'pertemuan'  => $request->pertemuan,
-            'name'       => $request->name,
-            'expired_at' => $request->expired,
-        ]);
-
-        // return view('dashboard.index', [
-        //     config(['app.title' => "Dashboard"]),
-        // ]);
-
-        return to_route('dashboard.index');
-    }
 }

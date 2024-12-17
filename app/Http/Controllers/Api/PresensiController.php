@@ -16,25 +16,21 @@ class PresensiController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function create(Request $request)
     {
-        $data = Presensi::query();
+        $request->validate([
+            'pertemuan' => ['required'],
+            'name'      => ['required'],
+            'expired'   => ['required'],
+        ]);
 
-        return DataTables::eloquent($data)
-            ->orderColumn('created_at', '-created_at $1')
-            ->addColumn('intro', function (Presensi $presensi) {
+        $data = Presensi::create([
+            'pertemuan'  => $request->pertemuan,
+            'name'       => $request->name,
+            'expired_at' => $request->expired,
+        ]);
 
-                $created = Carbon::parse($presensi->created_at);
-                $expired = $created->addHours(12);
-
-                // if ($created->diffInHours($expired)) {
-                //     return '<button type="button" class="btn btn-primary btn-sm">Presensi</button>';
-                // }
-
-                return 'time: ' . $created . " " . $expired;
-            })
-            ->rawColumns(['intro'])
-            ->toJson();
+        return to_route('dashboard.index');
     }
 
     /**
@@ -58,5 +54,16 @@ class PresensiController extends Controller
         ]);
 
         return back();
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Request $request, $uuid)
+    {
+        $data = Presensi::findOrFail($uuid);
+
+        dd($data);
     }
 }

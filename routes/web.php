@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PresensiController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\RoleController;
@@ -26,16 +27,33 @@ Route::group(
         Route::get('/give-admin', 'admin')
             ->name('admin');
 
-        Route::post('/presensi-create', 'create')
-            ->name('presensi.create');
+        // Route::post('/presensi-create', 'create')
+        //     ->name('presensi.create');
     },
 );
 
+Route::group(
+    [
+        'prefix'     => 'presensi',
+        'as'         => 'presensi.',
+        'controller' => PresensiController::class,
+    ],
+    function () {
+        Route::post('create', 'create')
+            ->name('create');
+
+        Route::post('store', 'store')
+            ->name('store');
+
+        Route::post('show/{uuid}', 'show')
+            ->name('show');
+    }
+);
 
 Route::resource('students', StudentController::class);
-Route::resource('teachers',TeacherController::class);
-Route::resource('roles',RoleController::class);
-Route::resource('users',UserController::class);
+Route::resource('teachers', TeacherController::class);
+Route::resource('roles', RoleController::class);
+Route::resource('users', UserController::class);
 
 
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

@@ -8,7 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ route('dashboard.presensi.create') }}">
+                        <form method="post" action="{{ route('presensi.create') }}">
                             @csrf
 
                             <div class="mb-3">
@@ -78,14 +78,17 @@
                                 {{ $created->isoFormat('HH:mm:ss') }}
                             </td>
                             <td>{{ $presensi->pertemuan }}</td>
-                            <td>{{ $presensi->name }}</td>
+                            <td>
+                                <a href="{{ route('presensi.show', ['uuid' => $presensi->uuid]) }}">{{ $presensi->name }}</a>
+                            </td>
                             <td class="text-center">
                                 @if (!$now->greaterThan($expired))
                                     @if (!$presensi->users->isNotEmpty())
-                                        <form method="post" action="{{ route('api.presensi.store') }}">
+                                        <form method="post" action="{{ route('presensi.store') }}">
                                             @csrf
                                             <input type="text" name="user_id" value="{{ Auth::user()->id }}" hidden>
-                                            <input type="text" name="presensi_id" value="{{ $presensi->id }}" hidden>
+                                            <input type="text" name="presensi_id" value="{{ $presensi->id }}"
+                                                hidden>
 
                                             <button type="submit" class="btn btn-primary btn-sm">Presensi</button>
                                         </form>

@@ -18,15 +18,15 @@
                         <i class="fa-solid fa-circle-info me-2"></i>
                         Presensi
                     </button>
-                    <a href="{{ route('students.show') }}" class="list-group-item list-group-item-action">
+                    <a href="{{ route('students.index') }}" class="list-group-item list-group-item-action">
                         <i class="fa-solid fa-user-graduate me-2"></i>
                         Students
                     </a>
-                    <a href="{{ route('teachers.show') }}" class="list-group-item list-group-item-action">
+                    <a href="{{ route('teachers.index') }}" class="list-group-item list-group-item-action">
                         <i class="fa-solid fa-chalkboard-teacher me-2"></i>
                         Teachers
                     </a>
-                    <a href="{{ route('roles.show') }}" class="list-group-item list-group-item-action">
+                    <a href="{{ route('roles.index') }}" class="list-group-item list-group-item-action">
                         <i class="fa-solid fa-chalkboard-teacher me-2"></i>
                         Roles
                     </a>
