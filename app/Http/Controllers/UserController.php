@@ -46,8 +46,8 @@ class UserController extends Controller
     {
         $request->validate([
             'nisn'     => ['required', 'unique:' . User::class],
-            'name'     => ['required', 'string', 'max:50', 'regex:/^[\w\s]+$/', 'unique:' . User::class],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'     => ['required', 'string'],
+            'password'     => ['required', 'string', 'max:50', 'regex:/^[\w\s]+$/', 'unique:' . User::class],
             'email'    => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'nomor_handphone'     => ['required'],
             'alamat'   => ['required'],
