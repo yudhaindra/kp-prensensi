@@ -45,3 +45,11 @@
         </div>
     </div>
 @endsection
+
+@section('footer')
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container text-center">
+            <p>&copy; {{ date('Y') }} SMA Immanuel Kalasan. All Rights Reserved.</p>
+        </div>
+    </footer>
+@endsection
