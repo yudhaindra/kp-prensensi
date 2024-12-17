@@ -5,6 +5,8 @@ use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +35,7 @@ Route::group(
 Route::resource('students', StudentController::class);
 Route::resource('teachers',TeacherController::class);
 Route::resource('roles',RoleController::class);
+Route::resource('users',UserController::class);
 
 
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

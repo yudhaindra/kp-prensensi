@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h1>Roles</h1>
                 <a href="{{ route('roles.create') }}" class="btn btn-primary mb-3">Add Role</a>
                 <table class="table table-bordered">
@@ -11,7 +11,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Description</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -20,7 +19,6 @@
                             <tr>
                                 <td>{{ $role->id }}</td>
                                 <td>{{ $role->name }}</td>
-                                <td>{{ $role->description }}</td>
                                 <td>
                                     <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-warning">Edit</a>
                                     <form action="{{ route('roles.destroy', $role->id) }}" method="POST"
@@ -34,9 +32,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </div>
-            <div class="col-md-6">
-                @include('layouts.jumbotron')
             </div>
         </div>
     </div>

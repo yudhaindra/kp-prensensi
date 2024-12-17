@@ -141,7 +141,7 @@ class TeacherController extends Controller
     
         $teachers->delete();
     
-        return redirect()->route('teacher.index')
-            ->with('success', 'Data siswa berhasil dihapus.');
+        return redirect()->route('teachers.index')
+            ->with('success', 'Data Guru berhasil dihapus.');
     }
 }

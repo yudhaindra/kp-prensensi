@@ -1,6 +1,6 @@
 <x-app>
 
-    @include('layouts.jumbotron')
+    {{-- @include('layouts.jumbotron') --}}
 
     <div class="container" style="margin-bottom: 150px;">
         <div class="row">
