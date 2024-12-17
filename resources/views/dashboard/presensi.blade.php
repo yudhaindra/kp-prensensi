@@ -23,6 +23,12 @@
                                     value="{{ old('name') }}" required autocomplete="name">
                             </div>
 
+                            <div class="mb-3">
+                                <label for="expired" class="form-label">Expired</label>
+                                <input type="datetime-local" class="form-control" id="expired" name="expired"
+                                    value="{{ old('expired') }}" required autocomplete="expired">
+                            </div>
+
                             <div class="d-flex flex-row-reverse">
                                 <button id="submit" class="btn btn-success btn-sm" type="submit">
                                     Tambah
@@ -62,7 +68,7 @@
                         @php
                             $now = Carbon\Carbon::now();
                             $created = Carbon\Carbon::create($presensi->created_at);
-                            $expired = $created->copy()->addHours(1);
+                            $expired = Carbon\Carbon::create($presensi->expired_at);
                         @endphp
 
                         <tr>

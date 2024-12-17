@@ -55,11 +55,13 @@ class DashboardController extends Controller
         $request->validate([
             'pertemuan' => ['required'],
             'name'      => ['required'],
+            'expired'   => ['required'],
         ]);
 
         $data = Presensi::create([
-            'pertemuan' => $request->pertemuan,
-            'name'      => $request->name,
+            'pertemuan'  => $request->pertemuan,
+            'name'       => $request->name,
+            'expired_at' => $request->expired,
         ]);
 
         // return view('dashboard.index', [

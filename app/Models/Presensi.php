@@ -26,7 +26,20 @@ class Presensi extends Model
         'uuid',
         'pertemuan',
         'name',
+        'expired_at',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'expired_at' => 'datetime',
+        ];
+    }
 
     /**
      * Generate a new UUID for the model.
