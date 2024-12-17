@@ -3,12 +3,13 @@
         <div class="row align-items-center">
             <!-- Gambar di Kiri -->
             <div class="col-md-3 text-center mb-3 mb-md-0">
-                <img src="{{ asset('images/teachers/logoimka.png') }}" alt="Logo SMA Immanuel Kalasan" class="img-fluid" style="width: 200px;">
+                <img src="{{ asset('images/teachers/logoimka.png') }}" alt="Logo SMA Immanuel Kalasan"
+                    class="img-fluid" style="width: 200px;">
             </div>
             <!-- Judul dan Deskripsi -->
             <div class="col-md-9">
                 <h1 class="display-4">IM-CLASS</h1>
-                <p class="lead">Tambah Siswa</p>
+                <p class="lead">Tampil Data</p>
             </div>
         </div>
     </div>

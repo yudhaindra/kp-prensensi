@@ -56,4 +56,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Presensi::class, 'presensi_users');
     }
+
+    public function PresensiUser()
+    {
+        return $this->hasMany(PresensiUser::class);
+    }
 }

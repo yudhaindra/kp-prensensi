@@ -24,7 +24,7 @@
 </head>
 
 <body>
-    <main id="app" class="my-5">
+    <main id="app">
         {{ $slot }}
     </main>
 

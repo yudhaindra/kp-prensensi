@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Presensi;
@@ -62,8 +62,14 @@ class PresensiController extends Controller
      */
     public function show(Request $request, $uuid)
     {
-        $data = Presensi::findOrFail($uuid);
+        $users = User::all();
 
-        dd($data);
+        $data = Presensi::where('uuid', $uuid)->firstOrFail();
+
+        return view('presensi.show', [
+            config(['app.title' => $data->name]),
+            'data'  => $data,
+            'users' => $users,
+        ]);
     }
 }

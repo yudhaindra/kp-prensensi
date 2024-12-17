@@ -22,4 +22,9 @@ class PresensiUser extends Model
         'presensi_id',
         'user_id',
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

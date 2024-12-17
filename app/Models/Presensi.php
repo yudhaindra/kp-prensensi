@@ -59,6 +59,11 @@ class Presensi extends Model
         return ['uuid'];
     }
 
+    public function PresensiUser()
+    {
+        return $this->hasMany(PresensiUser::class);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'presensi_users');

@@ -15,7 +15,8 @@
             <div class="row align-items-center">
                 <!-- Gambar di Kiri -->
                 <div class="col-md-3 text-center mb-3 mb-md-0">
-                    <img src="{{ asset('images/teachers/logoimka.png') }}" alt="Logo SMA Immanuel Kalasan" class="img-fluid" style="width: 200px;">
+                    <img src="{{ asset('images/teachers/logoimka.png') }}" alt="Logo SMA Immanuel Kalasan"
+                        class="img-fluid" style="width: 200px;">
                 </div>
                 <!-- Judul dan Deskripsi -->
                 <div class="col-md-9">
@@ -55,11 +56,14 @@
                         <td>{{ $student->gambar }}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Action Buttons">
-                                <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning btn-sm mr-1">Update</a>
-                                <form method="POST" action="{{ route('students.destroy', ['student' => $student->id]) }}">
+                                <a href="{{ route('students.edit', $student->id) }}"
+                                    class="btn btn-warning btn-sm mr-1">Update</a>
+                                <form method="POST"
+                                    action="{{ route('students.destroy', ['student' => $student->id]) }}">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm" style="margin-right: 3px">Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                        style="margin-right: 3px">Delete</button>
                                 </form>
                             </div>
                         </td>
