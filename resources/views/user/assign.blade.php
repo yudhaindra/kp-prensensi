@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Assign Roles</h1>
+        <h1>Assign Roles </h1>
         <form action="{{ route('roles.assign') }}" method="POST">
             @csrf
             <div class="form-group">
