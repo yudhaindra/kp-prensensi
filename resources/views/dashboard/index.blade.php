@@ -16,7 +16,19 @@
                         data-bs-toggle="pill" data-bs-target="#v-pills-home" aria-controls="v-pills-home"
                         aria-selected="true">
                         <i class="fa-solid fa-circle-info me-2"></i>
-                        Account Info
+                        Presensi
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action active" id="v-pills-home-tab"
+                        data-bs-toggle="pill" data-bs-target="#v-pills-home" aria-controls="v-pills-home"
+                        aria-selected="true">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        Guru
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action active" id="v-pills-home-tab"
+                        data-bs-toggle="pill" data-bs-target="#v-pills-home" aria-controls="v-pills-home"
+                        aria-selected="true">
+                        <i class="fa-solid fa-circle-info me-2"></i>
+                        Murid
                     </button>
                 </div>
             </div>
