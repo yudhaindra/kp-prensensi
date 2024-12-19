@@ -26,7 +26,9 @@ class User extends Authenticatable
         'email_verified_at',
         'nomor_handphone',
         'alamat',
+        'profile',
         'remember_token',
+        'dob',
     ];
 
     /**
@@ -47,6 +49,7 @@ class User extends Authenticatable
     protected function casts(): array
     {
         return [
+            'dob' => 'date',
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
@@ -60,5 +63,10 @@ class User extends Authenticatable
     public function PresensiUser()
     {
         return $this->hasMany(PresensiUser::class);
+    }
+
+    public function getProfile()
+    {
+        return $this->profile != null ? asset("images/profile/{$this->profile}") : asset('/images/profile/default.jpg');
     }
 }

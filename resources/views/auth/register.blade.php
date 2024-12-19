@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-8">
 
-                <x-alert />
+                @include('layouts.alert')
 
                 <div class="card">
                     <div class="card-body">
-                        <form method="post" action="{{ route('register') }}">
+                        <form method="post" action="{{ route('register') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="mb-3">
@@ -24,21 +24,33 @@
 
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required
-                                    autocomplete="email">
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ old('email') }}" required autocomplete="email">
                             </div>
 
                             <div class="mb-3">
                                 <label for="nohp" class="form-label">No Handphone</label>
-                                <input type="text" class="form-control" id="nohp" name="nohp" value="{{ old('nohp') }}" required
-                                    autocomplete="nohp">
+                                <input type="text" class="form-control" id="nohp" name="nohp"
+                                    value="{{ old('nohp') }}" required autocomplete="nohp">
                             </div>
 
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
 
-                                <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat') }}" required
-                                autocomplete="alamat">
+                                <input type="text" class="form-control" id="alamat" name="alamat"
+                                    value="{{ old('alamat') }}" required autocomplete="alamat">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="dob" class="form-label">Tanggal Lahir</label>
+
+                                <input type="date" class="form-control" id="dob" name="dob"
+                                    value="{{ old('dob') }}" required autocomplete="dob">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="profile" class="form-label">Profile</label>
+                                <input class="form-control" type="file" id="profile" name="profile" required>
                             </div>
 
                             <div class="row">

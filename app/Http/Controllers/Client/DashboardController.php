@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Presensi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,19 +16,17 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-        // $dataPresensi = Presensi::latest()->get();
-
-        $now = \Carbon\Carbon::now()->diffInHours();
-
         $user = Auth::user();
-
         $dataPresensi = Presensi::with(['users' => function ($query) use ($user) {
             $query->where('users.id', $user->id);
         }])->latest()->get();
 
+        $students = User::role('student')->get();
+
         return view('dashboard.index', [
             config(['app.title' => "Dashboard"]),
             'dataPresensi' => $dataPresensi,
+            'students'     => $students,
         ]);
     }
 
