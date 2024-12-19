@@ -14,12 +14,22 @@ class UserController extends Controller
     {
         $user = User::all();
         
-        return view('user.index', compact('user'));
+        return view('user.index', compact('users'));
     }
+    
+    public function updateRole(Request $request, $id)
+    {
+        $request->validate([
+            'role' => 'required|exists:roles,name',
+        ]);
 
-    /**
-     * Show the form for creating a new resource.
-     */
+        $user = User::findOrFail($id);
+
+        // Hapus role sebelumnya dan tambahkan role baru
+        $user->syncRoles($request->input('role'));
+
+        return redirect()->route('user.index')->with('success', 'Role updated successfully!');
+    }
 
     /**
      * Display the specified resource.
@@ -46,12 +56,12 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'nisn'     => ['required', 'unique:' . User::class],
-            'name'     => ['required', 'string'],
-            'password'     => ['required', 'string', 'max:50', 'regex:/^[\w\s]+$/', 'unique:' . User::class],
-            'email'    => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'nomor_handphone'     => ['required'],
-            'alamat'   => ['required'],
+            'nisn'            => ['required', 'unique:' . User::class],
+            'name'            => ['required', 'string'],
+            'password'        => ['required', 'string', 'max:50', 'regex:/^[\w\s]+$/', 'unique:' . User::class],
+            'email'           => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'nomor_handphone' => ['required'],
+            'alamat'          => ['required'],
         ]);
     
         
