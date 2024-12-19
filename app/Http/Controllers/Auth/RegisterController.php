@@ -36,7 +36,16 @@ class RegisterController extends Controller
             'email'    => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'nohp'     => ['required'],
             'alamat'   => ['required'],
+            'profile'  => ['required'],
+            'dob'      => ['required', 'date'],
         ]);
+
+        $file = $request->file('profile');
+        $file->storeAs(
+            'profile/',
+            $file->getClientOriginalName(),
+            'dae'
+        );
 
         $user = User::create([
             'nisn'            => $request->nisn,
@@ -45,6 +54,8 @@ class RegisterController extends Controller
             'email'           => $request->email,
             'nomor_handphone' => $request->nohp,
             'alamat'          => $request->alamat,
+            'profile'         => $file->getClientOriginalName(),
+            'dob'             => $request->dob,
         ]);
 
         $user->assignRole('student');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -58,9 +59,7 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        $data = Student::findOrFail($id);
-
-        dd($data);
+        $data = User::findOrFail($id);
     }
 
     /**
@@ -69,7 +68,7 @@ class StudentController extends Controller
     public function edit(string $id)
     {
         // Ambil data siswa berdasarkan ID
-        $student = Student::findOrFail($id);
+        $student = User::findOrFail($id);
 
         // Tampilkan view untuk form edit
         // return view('student.edit', compact('student'));
@@ -92,29 +91,29 @@ class StudentController extends Controller
             'alamat' => ['required'],
             'gambar'   => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ]);
-    
-        
+
+
         $student = Student::findOrFail($id);
-    
-        
+
+
         if ($request->hasFile('file')) {
             if (file_exists(public_path($student->gambar))) {
                 unlink(public_path($student->gambar));
             }
-    
-        
+
+
             $file = $request->file('file');
             $file->move('images', $file->getClientOriginalName());
             $student->gambar = 'images/' . $file->getClientOriginalName();
         }
-    
+
         $student->update([
             'nisn' => $request->nisn,
             'nama'   => $request->nama,
             'umur'   => $request->umur,
             'alamat' => $request->alamat,
         ]);
-    
+
         return redirect()->route('students.index')
             ->with('success', 'Data siswa berhasil diperbarui.');
     }
@@ -127,13 +126,13 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
 
         // dd($student);
-    
+
         if (file_exists(public_path($student->gambar))) {
             unlink(public_path($student->gambar));
         }
-    
+
         $student->delete();
-    
+
         return redirect()->route('students.index')
             ->with('success', 'Data siswa berhasil dihapus.');
     }

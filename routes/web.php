@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Client\AccountController;
 use App\Http\Controllers\Client\PresensiController;
 use App\Http\Controllers\Client\DashboardController;
 use App\Http\Controllers\RoleController;
@@ -59,3 +60,20 @@ Route::resource('users', UserController::class);
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::group(
+        [
+            'prefix'     => 'account',
+            'as'         => 'account.',
+            'controller' => AccountController::class,
+        ],
+        function () {
+            Route::get('/', 'index')
+                ->name('index');
+
+            Route::put('/update', 'update')
+                ->name('update');
+        },
+    );
+});
