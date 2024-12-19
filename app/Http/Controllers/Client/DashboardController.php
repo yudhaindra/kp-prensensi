@@ -44,4 +44,6 @@ class DashboardController extends Controller
 
         return to_route('home');
     }
+
+    
 }

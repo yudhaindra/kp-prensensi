@@ -9,6 +9,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Mpdf\Mpdf;
 
 class PresensiController extends Controller
 {
@@ -32,6 +33,7 @@ class PresensiController extends Controller
 
         return to_route('dashboard.index');
     }
+
 
     /**
      * @param Request $request
@@ -72,4 +74,29 @@ class PresensiController extends Controller
             'users' => $users,
         ]);
     }
+
+    function download_pdf($uuid)
+    {
+        // Initialize mPDF
+    $mpdf = new Mpdf();
+
+    // Fetch data based on UUID
+    $data = Presensi::where('uuid', $uuid)->firstOrFail();
+
+    // Get all users
+    $users = User::all();
+
+    // Render the view with the data and users
+    $html = view('presensi.show', [
+        'data'  => $data,
+        'users' => $users,
+    ])->render();  // Use render() to return the view content as a string
+
+    // Write the HTML to the PDF
+    $mpdf->WriteHTML($html);
+
+    // Output the PDF for download ('D' forces download)
+    $mpdf->Output('download-rekap-presensi.pdf', 'D');
+    }
+    
 }

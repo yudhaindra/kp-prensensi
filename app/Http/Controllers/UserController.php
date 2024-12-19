@@ -12,7 +12,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::all();
+        $users = User::all();
         
         return view('user.index', compact('users'));
     }
@@ -23,10 +23,10 @@ class UserController extends Controller
             'role' => 'required|exists:roles,name',
         ]);
 
-        $user = User::findOrFail($id);
+        $users = User::findOrFail($id);
 
         // Hapus role sebelumnya dan tambahkan role baru
-        $user->syncRoles($request->input('role'));
+        $users->syncRoles($request->input('role'));
 
         return redirect()->route('user.index')->with('success', 'Role updated successfully!');
     }
@@ -40,13 +40,13 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $user = User::findOrFail($id);
+        $users = User::findOrFail($id);
 
         // Tampilkan view untuk form edit
         
         return view('user.edit', [
             config(['app.jumbotron' => "warning"]),
-            'user' => $user,
+            'user' => $users,
         ]);
     }
 
@@ -65,12 +65,12 @@ class UserController extends Controller
         ]);
     
         
-        $user = User::findOrFail($id);
+        $users = User::findOrFail($id);
     
         
        
     
-        $user->update([
+        $users->update([
             'nisn' => $request->nisn,
             'name'   => $request->name,
             'password' => bcrypt($request->password),
@@ -88,11 +88,11 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $user = User::findOrFail($id);
+        $users = User::findOrFail($id);
 
         // dd($user);
     
-        $user->delete();
+        $users->delete();
     
         return redirect()->route('user.index')
             ->with('success', 'Data Guru berhasil dihapus.');

@@ -4,6 +4,9 @@
     @include('layouts.header')
 
     <div class="container my-5">
+        @if (strpos(url()->current(), 'pdf') == false )
+        <a href="{{ url('presensi/download/pdf')}}">DOWNLOAD PDF</a>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

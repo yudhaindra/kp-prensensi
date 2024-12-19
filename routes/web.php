@@ -56,6 +56,9 @@ Route::resource('teachers', TeacherController::class);
 Route::resource('roles', RoleController::class);
 
 Route::resource('users', UserController::class);
+Route::put('/users/{id}/update-role', [UserController::class, 'updateRole'])->name('users.updateRole');
+
+Route::get('presensi/download/pdf/', [PresensiController::class, 'download_pdf']);
 
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
