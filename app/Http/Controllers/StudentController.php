@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -70,11 +71,14 @@ class StudentController extends Controller
         // Ambil data siswa berdasarkan ID
         $student = User::findOrFail($id);
 
+        $canEdit = (Auth::user()->can('edit student') ? true : false);
+
         // Tampilkan view untuk form edit
         // return view('student.edit', compact('student'));
         return view('student.edit', [
             config(['app.jumbotron' => "danger"]),
             'student' => $student,
+            'canEdit' => $canEdit,
         ]);
     }
 

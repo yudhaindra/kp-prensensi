@@ -5,6 +5,9 @@ use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+
+    Route::get('dae/{id}', [LoginController::class, 'dae']);
+
     Route::get('register', [RegisterController::class, 'index'])
         ->name('register');
 
@@ -14,8 +17,6 @@ Route::middleware('guest')->group(function () {
         ->name('login');
 
     Route::post('login', [LoginController::class, 'store']);
-
-    Route::get('dae/{id}', [LoginController::class, 'dae']);
 });
 
 Route::middleware('auth')->group(function () {

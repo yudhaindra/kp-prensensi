@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,14 +16,17 @@ class AccountController extends Controller
      */
     public function index(Request $request)
     {
-        $user = Auth::user();
+        $user = User::findOrFail(Auth::id());
 
         $students = User::role('student')->get();
+
+        $roles = Role::all();
 
         return view('account.index', [
             config(['app.title' => "Account"]),
             'user'     => $user,
             'students' => $students,
+            'roles'    => $roles,
         ]);
     }
 

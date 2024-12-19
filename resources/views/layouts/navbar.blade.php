@@ -1,7 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            SMA IMMANUEL KALASAN
+        <a class="navbar-brand" href="{{ route('dashboard.index') }}">
+            <div class="fs-5">
+                SMA IMMANUEL KALASAN
+            </div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

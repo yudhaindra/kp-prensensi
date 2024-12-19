@@ -19,7 +19,8 @@
 
                 <div class="mb-3">
                     <label for="profile" class="form-label">Profile</label>
-                    <input class="form-control" type="file" id="profile" name="profile" required>
+                    <input class="form-control" type="file" id="profile" name="profile"
+                        value="{{ old('profile') }}">
                 </div>
 
                 <div class="d-flex flex-row-reverse">

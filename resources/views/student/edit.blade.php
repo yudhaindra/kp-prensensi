@@ -22,7 +22,7 @@
                         </p>
                         <p class="card-text">
                             <small class="text-body-secondary">
-                                {{ \Carbon\Carbon::parse($student->dob)->age }}
+                                Umur {{ \Carbon\Carbon::parse($student->dob)->age }} Tahun
                             </small>
                         </p>
                     </div>
@@ -30,36 +30,42 @@
             </div>
 
             <div class="col-md-8">
-                <form method="POST" action="{{ route('students.update', $student->id) }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('students.update', $student->id) }}"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <div class="form-group mb-3">
                         <label for="exampleNisn">NISN</label>
                         <input type="text" class="form-control" placeholder="Masukkan nisn" name="nisn"
-                            value="{{ old('nisn', $student->nisn) }}" required>
+                            value="{{ old('nisn', $student->nisn) }}" @disabled(!$canEdit) required>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="exampleName">Nama</label>
                         <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama"
-                            value="{{ old('nama', $student->name) }}" required>
+                            value="{{ old('nama', $student->name) }}" @disabled(!$canEdit) required>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="exampleAddress">Alamat</label>
                         <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat"
-                            value="{{ old('alamat', $student->alamat) }}" required>
+                            value="{{ old('alamat', $student->alamat) }}" @disabled(!$canEdit) required>
                     </div>
 
-                    <div class="form-group mb-3">
-                        <label for="profile">Profile</label><br>
-                        <input class="form-control" type="file" id="profile" name="profile" required>
-                    </div>
+                    @if ($canEdit)
+                        <div class="form-group mb-3">
+                            <label for="profile">Profile</label><br>
+                            <input class="form-control" type="file" id="profile" name="profile"
+                                @disabled(!$canEdit) required>
+                        </div>
+                    @endif
 
                     <div class="mt-3">
-                        <button type="submit" class="btn btn-success">Simpan</button>
-                        <a href="{{ route('students.index') }}" class="btn btn-secondary">Batal</a>
+                        @if ($canEdit)
+                            <button type="submit" class="btn btn-success">Simpan</button>
+                        @endif
+                        <a href="{{ route('dashboard.index') }}" class="btn btn-secondary">Kembali</a>
                     </div>
                 </form>
             </div>

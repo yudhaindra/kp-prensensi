@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Client\AccountController;
 use App\Http\Controllers\Client\PresensiController;
 use App\Http\Controllers\Client\DashboardController;
+use App\Http\Controllers\Client\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -52,7 +53,9 @@ Route::group(
 );
 
 Route::resource('students', StudentController::class);
+
 Route::resource('teachers', TeacherController::class);
+
 Route::resource('roles', RoleController::class);
 
 Route::resource('users', UserController::class);
@@ -60,6 +63,9 @@ Route::resource('users', UserController::class);
 // Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [LoginController::class, 'login']);
 // Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::get('/profile/{id}', [ProfileController::class, 'index'])
+    ->name('profile');
 
 Route::middleware('auth')->group(function () {
     Route::group(

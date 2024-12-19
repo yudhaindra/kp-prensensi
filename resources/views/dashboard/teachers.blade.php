@@ -1,11 +1,10 @@
 <div>
 
-    <div>
-        <h5>
-            Data Students
-        </h5>
-        <div class="border-bottom my-2"></div>
-    </div>
+    <h5>
+        Data Teachers
+    </h5>
+
+    <div class="border-bottom my-2"></div>
 
     <table class="table table-striped">
         <thead class="table-dark">
@@ -18,18 +17,18 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($students as $student)
+            @foreach ($teachers as $teacher)
                 <tr>
-                    <td>{{ $student->nisn }}</td>
-                    <td>{{ $student->name }}</td>
-                    <td>{{ \Carbon\Carbon::parse($student->dob)->age }}</td>
-                    <td>{{ $student->alamat }}</td>
+                    <td>{{ $teacher->nisn }}</td>
+                    <td>{{ $teacher->name }}</td>
+                    <td>{{ \Carbon\Carbon::parse($teacher->dob)->age }}</td>
+                    <td>{{ $teacher->alamat }}</td>
                     <td class="text-center">
                         <div class="d-grid gap-2 d-md-block">
                             <a class="btn btn-warning btn-sm" type="button"
-                                href="{{ route('students.edit', ['student' => $student->id]) }}">Edit</a>
+                                href="{{ route('teachers.edit', ['teacher' => $teacher->id]) }}">Lihat</a>
 
-                            @can('delete student')
+                            @can('delete teacher')
                                 <button class="btn btn-danger btn-sm" type="button">Delete</button>
                             @endcan
                         </div>

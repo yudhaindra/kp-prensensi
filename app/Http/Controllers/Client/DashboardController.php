@@ -23,10 +23,13 @@ class DashboardController extends Controller
 
         $students = User::role('student')->get();
 
+        $teachers = User::role('teacher')->get();
+
         return view('dashboard.index', [
             config(['app.title' => "Dashboard"]),
             'dataPresensi' => $dataPresensi,
             'students'     => $students,
+            'teachers'     => $teachers,
         ]);
     }
 
